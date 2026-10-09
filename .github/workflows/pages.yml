@@ -31,8 +31,13 @@ jobs:
           cp index.html _site/
           touch _site/.nojekyll
 
+      # enablement lets the first run create the Pages site itself when the
+      # repository has not enabled Pages yet (requires actions:write-capable
+      # token; the default GITHUB_TOKEN is used).
       - name: Configure Pages
         uses: actions/configure-pages@v5
+        with:
+          enablement: true
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
